@@ -93,11 +93,11 @@ def board_generator(difficulty):#این متد در واقع برای ما با 
 
 
 def playing(board):#و حالا با این فانکشن ارتباط میان بقیه فانشکن هارا برقرار میکنیم
+    name_player = input("enter your name: ")#دریافت اسم کاربر
+    print()
+    print(f"Ok {name_player} lets start!")#خوش امد گویی
+    print()
     while True:
-        name_player = input("enter your name: ") #دریافت اسم کاربر
-        print()
-        print(f"Ok {name_player} lets start!")#خوش امد گویی
-        print()
         print_board(board)
         print("\n")#گرفتن ورودی ها از کاربر
         row = int(input("Enter the row number (1-9): ")) - 1
