@@ -85,3 +85,5 @@ def board_generator(difficulty):
         board[x][y] = 0
     
     return board
+
+
