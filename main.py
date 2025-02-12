@@ -85,3 +85,20 @@ def board_generator(difficulty):
         board[x][y] = 0
     
     return board
+
+def playing(board):
+    while True:
+        print_board(board)
+        print("\n")
+        row = int(input("Enter the row number (1-9): ")) - 1
+        col = int(input("Enter the column number (1-9): ")) - 1
+        num = int(input("Enter the number you want to put (1-9): "))
+        print()
+        
+        if valid_move(board, num, (row, col)):
+            board[row][col] = num
+            if not find_space(board):
+                print("Great, your puzzle is solved!")
+                break
+        else:
+            print("Wrong move! Try again!")
