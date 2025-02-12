@@ -112,6 +112,7 @@ def playing(board):#و حالا با این فانکشن ارتباط میان �
                 break
         else:
             print("Wrong move! Try again!")
+            print()
 
 
 
