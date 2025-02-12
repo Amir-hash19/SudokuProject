@@ -102,3 +102,20 @@ def playing(board):
                 break
         else:
             print("Wrong move! Try again!")
+
+
+def choose_difficulty():
+    print("Choose difficulty level:")
+    print("1. Easy")
+    print("2. Medium")
+    print("3. Hard")
+    while True:
+        choice = input("Enter your choice (1/2/3): ")
+        if choice == "1":
+            return "easy"
+        elif choice == "2":
+            return "medium"
+        elif choice == "3":
+            return "hard"
+        else:
+            print("Invalid choice. Please choose 1, 2, or 3.")            
