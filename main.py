@@ -39,3 +39,49 @@ def valid_move(board, num, pos):
     return True
 
 
+
+def solver(board):
+    find = find_space(board)
+    if not find:
+        return True
+    row, col = find
+    for i in range(1, 10):
+        if valid_move(board, i, (row, col)):
+            board[row][col] = i
+            if solver(board):
+                return True
+            board[row][col] = 0
+    return False
+
+
+
+def board_generator(difficulty):
+    base = 3
+    side = base * base
+    
+    def pattern(r, c):
+        return (base * (r % base) + r // base + c) % side
+    
+    def mix_operation(s):
+        return random.sample(s, len(s))
+    
+    rbase = range(base)
+    rows = [g * base + r for g in mix_operation(rbase) for r in mix_operation(rbase)]
+    cols = [g * base + c for g in mix_operation(rbase) for c in mix_operation(rbase)]
+    nums = mix_operation(range(1, base * base + 1))
+    
+    board = [[nums[pattern(r, c)] for c in cols] for r in rows]
+    
+    if difficulty == "easy":
+        empties = random.randint(30, 40)
+    elif difficulty == "medium":
+        empties = random.randint(40, 50)
+    else:
+        empties = random.randint(50, 60)
+    
+    for _ in range(empties):
+        x = random.randint(0, side - 1)
+        y = random.randint(0, side - 1)
+        board[x][y] = 0
+    
+    return board
