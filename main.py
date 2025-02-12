@@ -13,12 +13,15 @@ def print_board(board):
                 print(board[row][col], end=" ")
         print()
 
+
 def find_space(board):
     for i in range(len(board)):
         for j in range(len(board[0])):
             if board[i][j] == 0:
                 return (i, j)
     return None
+
+
 
 def valid_move(board, num, pos):
     row, col = pos
@@ -86,4 +89,41 @@ def board_generator(difficulty):
     
     return board
 
+
+
+
+def playing(board):
+    while True:
+        print_board(board)
+        print("\n")
+        row = int(input("Enter the row number (1-9): ")) - 1
+        col = int(input("Enter the column number (1-9): ")) - 1
+        num = int(input("Enter the number you want to put (1-9): "))
+        print()
+        
+        if valid_move(board, num, (row, col)):
+            board[row][col] = num
+            if not find_space(board):
+                print("Great, your puzzle is solved!")
+                break
+        else:
+            print("Wrong move! Try again!")
+
+
+
+def choose_difficulty():
+    print("Choose difficulty level:")
+    print("1. Easy")
+    print("2. Medium")
+    print("3. Hard")
+    while True:
+        choice = input("Enter your choice (1/2/3): ")
+        if choice == "1":
+            return "easy"
+        elif choice == "2":
+            return "medium"
+        elif choice == "3":
+            return "hard"
+        else:
+            print("Invalid choice. Please choose 1, 2, or 3.")            
 
