@@ -127,3 +127,9 @@ def choose_difficulty():
         else:
             print("Invalid choice. Please choose 1, 2, or 3.")            
 
+
+
+if __name__ == "__main__":
+    difficulty = choose_difficulty()
+    board_made = board_generator(difficulty)
+    playing(board_made)
